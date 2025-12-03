@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "webull-openapi-python-sdk"
+version = "1.0.5"
+description = "Webull Python SDK."
+readme = "README.rst"
+license = "Apache-2.0"
+authors = [
+    { name = "Webull" }
+]
+requires-python = ">=3.9"
+dependencies = [
+    "jmespath>=0.9.3,<1.0.0",
+    "cryptography>=2.6.0",
+    "cachetools==6.2.2",
+    "paho-mqtt==1.6.1",
+    "protobuf==6.33.1",
+    "grpcio==1.76.0",
+    "grpcio-tools==1.76.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Webull-openAPI/webull-openapi-python-sdk"
+
+[tool.setuptools]
+platforms = ["any"]
+
+[tool.setuptools.packages.find]
+exclude = ["tests*"]
+
+[tool.setuptools.package-data]
+"webull.core" = ["data/*.json", "*.pem", "vendored/*.pem"]
+"webull.core.vendored.requests.packages.certifi" = ["cacert.pem"]

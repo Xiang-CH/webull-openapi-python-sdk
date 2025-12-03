@@ -39,7 +39,7 @@ from .exceptions import (
 )
 from .packages.ssl_match_hostname import CertificateError
 from .packages import six
-from .packages.six.moves import queue
+import queue
 from .connection import (
     port_by_scheme,
     DummyConnection,

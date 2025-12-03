@@ -56,7 +56,7 @@ from __future__ import absolute_import
 import io
 import logging
 import warnings
-from ..packages.six.moves.urllib.parse import urljoin
+from urllib.parse import urljoin
 
 from ..exceptions import (
     HTTPError,

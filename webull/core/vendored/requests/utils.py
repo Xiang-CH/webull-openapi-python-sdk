@@ -22,7 +22,6 @@ This module provides utility functions that are used within Requests
 that are also useful for external consumption.
 """
 
-import cgi
 import codecs
 import contextlib
 import io
@@ -32,6 +31,7 @@ import re
 import socket
 import struct
 import warnings
+from email.message import Message
 
 from .__version__ import __version__
 from . import certs
@@ -431,7 +431,9 @@ def get_encoding_from_headers(headers):
     if not content_type:
         return None
 
-    content_type, params = cgi.parse_header(content_type)
+    m = Message()
+    m['content-type'] = content_type
+    content_type, params = m.get_content_type(), m.get_params()
 
     if 'charset' in params:
         return params['charset'].strip("'\"")

@@ -22,7 +22,7 @@ from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool
 from .connectionpool import port_by_scheme
 from .exceptions import LocationValueError, MaxRetryError, ProxySchemeUnknown
 from .packages import six
-from .packages.six.moves.urllib.parse import urljoin
+from urllib.parse import urljoin
 from .request import RequestMethods
 from .util.url import parse_url
 from .util.retry import Retry

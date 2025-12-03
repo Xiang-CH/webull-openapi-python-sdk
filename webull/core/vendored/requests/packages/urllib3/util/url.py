@@ -17,7 +17,7 @@ from collections import namedtuple
 import re
 
 from ..exceptions import LocationParseError
-from ..packages.six.moves.urllib.parse import quote
+from urllib.parse import quote
 
 
 url_attrs = ['scheme', 'auth', 'host', 'port', 'path', 'query', 'fragment']

@@ -55,13 +55,21 @@ _const_compare_digest = getattr(hmac, 'compare_digest',
                                 _const_compare_digest_backport)
 
 
-try:  # Test for SSL features
-    import ssl
-    from ssl import wrap_socket, CERT_NONE, PROTOCOL_SSLv23
-    from ssl import HAS_SNI  # Has SNI?
-except ImportError:
-    pass
+# try:  # Test for SSL features
+#     import ssl
+#     from ssl import wrap_socket, CERT_NONE, PROTOCOL_SSLv23
+#     from ssl import HAS_SNI  # Has SNI?
+# except ImportError:
+#     pass
 
+import ssl
+from ssl import CERT_NONE
+from ssl import HAS_SNI  # Has SNI?
+# PROTOCOL_SSLv23 was renamed to PROTOCOL_TLS in Python 3.6 and removed in Python 3.10+
+try:
+    from ssl import PROTOCOL_SSLv23
+except ImportError:
+    from ssl import PROTOCOL_TLS as PROTOCOL_SSLv23
 
 try:
     from ssl import OP_NO_SSLv2, OP_NO_SSLv3, OP_NO_COMPRESSION
